@@ -38,7 +38,7 @@ def main():
     vx, vy = +1, +1 # 練習3
     bb_rct = bb_img.get_rect()
     bb_rct.center = x, y
-    
+    accs = [a for a in range(1, 11)]
     tmr = 0
     
 
@@ -60,16 +60,16 @@ def main():
                     kk_rct.move_ip(-mv[0], -mv[1])
         
         screen.blit(bg_img, [0, 0])
-        screen.blit(kk_img, kk_rct)
-        bb_rct.move_ip(vx, vy)
+        screen.blit(kk_img, kk_rct) #練習4
+        bb_rct.move_ip(vx, vy) #練習3
         yoko, tate = check_bound(screen.get_rect(), bb_rct)
         if not yoko:
             vx *= -1
         if not tate:
             vy *= -1
-        screen.blit(bb_img, bb_rct)
+        screen.blit(bb_img, bb_rct) #練習3
         
-        if kk_rct.colliderect(bb_rct):
+        if kk_rct.colliderect(bb_rct): #練習6
             return
 
         pg.display.update()
